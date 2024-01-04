@@ -4,7 +4,7 @@ import { Routes, Route } from 'react-router-dom';
 import Login from '../pages/Login';
 import Page404 from '../pages/Page404';
 
-export default function App() {
+export default function Router() {
   return (
     <Routes>
       <Route path="/" element={<Login />} />
