@@ -1,14 +1,14 @@
 import React from 'react';
-import { Route, Switch } from 'react-router-dom';
+import { Routes, Route } from 'react-router-dom';
 
 import Login from '../pages/Login';
 import Page404 from '../pages/Page404';
 
-export default function Routes() {
+export default function App() {
   return (
-    <Switch>
-      <Route exact path="/" component={Login} />
-      <Route path="*" component={Page404} />
-    </Switch>
+    <Routes>
+      <Route path="/" element={<Login />} />
+      <Route path="*" element={<Page404 />} />
+    </Routes>
   );
 }
