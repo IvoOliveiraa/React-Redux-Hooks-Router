@@ -1,19 +1,36 @@
-import { createSlice } from '@reduxjs/toolkit';
+import * as types from '../types';
 
 const initialState = {
   botaoClicado: false,
 };
 
-const exampleSlice = createSlice({
-  name: 'example',
-  initialState,
-  reducers: {
-    botaoClicado: (state) => ({
-      ...state,
-      botaoClicado: !state.botaoClicado,
-    }),
-  },
-});
+const myReducer = function (action, state = initialState) {
+  if (!action || !action.type) {
+    return state;
+  }
 
-export const { botaoClicado } = exampleSlice.actions;
-export default exampleSlice.reducer;
+  switch (action.type) {
+    case types.BOTAO_CLICADO_SUCCESS: {
+      console.log('Sucesso na requisição');
+      const newState = { ...state };
+      newState.botaoClicado = !newState.botaoClicado;
+      return newState;
+    }
+
+    case types.BOTAO_CLICADO_FAILURE: {
+      console.log('Deu erro na requisição');
+      return state;
+    }
+
+    case types.BOTAO_CLICADO_REQUEST: {
+      console.log('Estou fazendo a requisição');
+      return state;
+    }
+
+    default: {
+      return state;
+    }
+  }
+};
+
+export default myReducer;
